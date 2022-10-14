@@ -1,3 +1,5 @@
+package Game;
+
 import javax.swing.*;
 
 public class Main {
@@ -8,5 +10,14 @@ public class Main {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
         window.setTitle("Akylbek's life simulator game");
+
+
+        GamePanel panel = new GamePanel();
+        window.add(panel);
+        window.pack();
+        window.setLocationRelativeTo(null);
+        window.setVisible(true);
+
+        panel.startGameThread();
     }
 }
