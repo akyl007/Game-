@@ -1,5 +1,7 @@
 package Game;
 
+import Game.entity.Player;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -18,8 +20,10 @@ public class GamePanel extends JPanel implements Runnable{
     //FPS
     int FPS = 60;
 
+
     Thread gameThread;
     KeyHandler keyHandler = new KeyHandler();
+    Player player = new Player(this, keyHandler);
 
     //Starting Player positions
     int playerX = 100;
