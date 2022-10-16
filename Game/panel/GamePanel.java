@@ -1,5 +1,6 @@
 package Game.panel;
 
+import Game.entity.CollisionChecker;
 import Game.entity.Player;
 import Game.tiles.TileManager;
 
@@ -9,30 +10,23 @@ import java.awt.*;
 public class GamePanel extends JPanel implements Runnable{
     // SCREEN SETTINGS
     private final int originalTileSize = 16;
-    private final int scale = 4;
-
-
-
+    private final int scale = 3;
     public final int tileSize = originalTileSize * scale; // 48x48
-
-    public final int maxWorldColumn = 50;
-
-    public final int maxWorldRow = 50;
-
-    public final int maxWorldWidth = maxWorldColumn * tileSize;
-    public final int maxWorldHeight = maxWorldRow * tileSize;
-    public final int maxScreenColumn = 12;
+    public final int maxScreenColumn = 16;
     public final int maxScreenRow = 12;
-
-    public final int screenWidth = tileSize * maxScreenRow; // 16 * 48 = 768
-    public final int screenHeight = tileSize * maxScreenColumn; // 12 * 48 = 576
-
+    public final int screenHeight = tileSize * maxScreenRow;
+    public final int screenWidth = tileSize * maxScreenColumn;
+    public final int maxWorldColumn = 50;
+    public final int maxWorldRow = 50;
+    public final int WorldWidth = maxWorldColumn * tileSize;
+    public final int WorldHeight = maxWorldRow * tileSize;
     //FPS
     int FPS = 60;
 
 
-    TileManager tileManager = new TileManager(this);
+    public TileManager tileManager = new TileManager(this);
     Thread gameThread;
+    public CollisionChecker collisionChecker = new CollisionChecker(this);
     KeyHandler keyHandler = new KeyHandler();
     public Player player = new Player(this, keyHandler);
 
